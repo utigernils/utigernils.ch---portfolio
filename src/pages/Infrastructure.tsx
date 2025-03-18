@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Server, Globe, Shield, Cpu } from 'lucide-react';
 import Background from '../components/Background';
@@ -33,20 +32,6 @@ const subdomains: SubdomainProps[] = [
 ];
 
 const Infrastructure = () => {
-  const backgroundRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (backgroundRef.current) {
-        const scrolled = window.scrollY;
-        const opacity = Math.max(0, 1 - scrolled / 200);
-        backgroundRef.current.style.opacity = opacity.toString();
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="relative">

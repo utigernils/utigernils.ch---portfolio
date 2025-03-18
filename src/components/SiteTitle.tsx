@@ -1,7 +1,7 @@
 import React from "react";
 import Background from "./Background";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 interface SiteTitleProps {
   title: string;
   subTitle: string;
@@ -9,7 +9,20 @@ interface SiteTitleProps {
 
 const SiteTitle: React.FC<SiteTitleProps & { children?: React.ReactNode }> = ({ title, subTitle, children }) => {
 
-  const backgroundRef = useRef(null);
+    const backgroundRef = useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        if (backgroundRef.current) {
+          const scrolled = window.scrollY;
+          const opacity = Math.max(0, 1 - scrolled / 200);
+          backgroundRef.current.style.opacity = opacity.toString();
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
   return (
     <div>
