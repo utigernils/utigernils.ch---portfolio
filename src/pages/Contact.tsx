@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import SiteTitle from '../components/SiteTitle';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,19 +17,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl font-bold mb-6">Contact</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Let's discuss your next project or just say hello!
-          </p>
-        </motion.div>
-
+    <div className="relative">
+      <SiteTitle title="Contact" subTitle="Get in touch with me">
+      <div className="bg-black min-h-[60vh]" >
+      <div className="max-w-[1400px] mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -70,7 +62,7 @@ const Contact = () => {
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >
-            <form onSubmit={handleSubmit} className="glassmorphic p-8 rounded-lg space-y-6">
+            <form onSubmit={handleSubmit} className="glassmorphic p-8 rounded-lg space-y-3">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Name
@@ -123,7 +115,9 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
+        </div>
       </div>
+      </SiteTitle>
     </div>
   );
 };

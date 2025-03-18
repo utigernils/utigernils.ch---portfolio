@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
+import SiteTitle from '../components/SiteTitle';
 
 const projects = [
   {
@@ -37,15 +38,10 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="min-h-screen pt-20 bg-black">
+    <div className="relative">
+      <SiteTitle title="Projects" subTitle="My recent and upcoming projects">
+    <div className="min-h-[60vh] bg-black">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <motion.h1
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="text-5xl font-bold mb-12 text-center"
-        >
-          Projects
-        </motion.h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -53,6 +49,8 @@ const Projects = () => {
           ))}
         </div>
       </div>
+    </div>
+    </SiteTitle>
     </div>
   );
 };
