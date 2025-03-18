@@ -21,7 +21,7 @@ return (
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glassmorphic rounded-lg overflow-hidden"
+              className="swiss-card overflow-hidden p-0"
             >
               <img
                 src={project.image}
