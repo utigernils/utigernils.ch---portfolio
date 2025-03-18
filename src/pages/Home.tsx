@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Code, Rocket, Palette } from 'lucide-react';
+import Background from '../components/Background';
 
 const Home = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -28,11 +29,7 @@ const Home = () => {
   return (
     <div ref={containerRef} className="relative">
       <div ref={backgroundRef} className="fixed top-0 left-0 w-full h-screen z-0">
-        <iframe
-          src="https://backend.utigernils.ch/media/background"
-          className="w-full h-full border-0"
-          title="Interactive Background"
-        />
+        <Background />
       </div>
 
       <div className="relative z-10">
