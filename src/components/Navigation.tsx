@@ -66,18 +66,18 @@ const Navigation = () => {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            className="md:hidden backdrop-blur-lg"
+            >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/50 backdrop-blur-lg rounded">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="text-white block px-3 py-2 rounded-md hover:bg-gray-700"
+                  className="text-white block px-3 py-2 rounded-md hover:bg-black/50"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
