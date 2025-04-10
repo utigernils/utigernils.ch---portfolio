@@ -11,6 +11,7 @@ type Project = {
         live: string;
         github: string;
     };
+    state: string;
 };
 
 
