@@ -10,11 +10,13 @@ const Background: React.FC = () => {
     let animationFrameId: number;
 
     const move = () => {
-      updateCurrent();
       if (interBubbleRef.current) {
         interBubbleRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
       }
-      animationFrameId = requestAnimationFrame(move);
+      animationFrameId = requestAnimationFrame(() => {
+        updateCurrent();
+        move();
+      });
     };
 
     const handleMouseMove = (event: MouseEvent) => {
