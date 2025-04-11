@@ -22,9 +22,9 @@ const Projects = () => {
         const transformedProjects = data.map((project) => ({
           title: project.title,
           description: project.short_description,
-          image: project.image_urls
-            ? JSON.parse(project.image_urls)[0]
-            : "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800",
+          long_description: project.long_description,
+          features: project.features ? JSON.parse(project.features) : [],
+          gallery: project.image_urls ? JSON.parse(project.image_urls) : [],
           tech: project.tags ? JSON.parse(project.tags) : [],
           links: {
             live: project.live_demo_url || "#",
