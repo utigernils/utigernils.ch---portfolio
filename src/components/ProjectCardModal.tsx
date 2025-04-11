@@ -81,8 +81,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
         </div>
 
         <div className="p-8">
-          <div className="flex justify-between items-start mb-6">
-            <h2 className="text-4xl font-bold tracking-tighter">
+          <div className="flex justify-between items-start mb-6 flex-wrap">
+            <h2 className="text-4xl font-bold tracking-tighter mb-6">
               {project.title}
             </h2>
             <div className="flex gap-4">
