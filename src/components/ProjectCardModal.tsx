@@ -117,9 +117,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             ))}
             <span
               className={`px-4 py-2 text-sm uppercase ${
-              project.state === "active"
+              project.state === "Done"
                 ? "bg-green-900 text-green-200"
-                : project.state === "maintenance"
+                : project.state === "In Progress"
                 ? "bg-yellow-900 text-yellow-200"
                 : "bg-blue-900 text-blue-200"
               }`}
