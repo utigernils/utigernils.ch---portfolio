@@ -1,32 +1,34 @@
 import React, { useEffect, useRef } from "react";
 import "./Background.css";
+import { useMouseStore } from "../stores/mouseStore";
 
 const Background: React.FC = () => {
   const interBubbleRef = useRef<HTMLDivElement>(null);
-  let curX = 0;
-  let curY = 0;
-  let tgX = 0;
-  let tgY = 0;
+  const { curX, curY, setTarget, updateCurrent } = useMouseStore();
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const move = () => {
-      curX += (tgX - curX) / 20;
-      curY += (tgY - curY) / 20;
+      updateCurrent();
       if (interBubbleRef.current) {
         interBubbleRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
       }
-      requestAnimationFrame(move);
+      animationFrameId = requestAnimationFrame(move);
     };
 
     const handleMouseMove = (event: MouseEvent) => {
-      tgX = event.clientX;
-      tgY = event.clientY;
+      setTarget(event.clientX, event.clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     move();
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [curX, curY, setTarget, updateCurrent]);
 
   return (
     <div className="gradient-bg">
