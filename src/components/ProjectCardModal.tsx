@@ -60,18 +60,22 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             alt={`${project.title} - Image ${currentImageIndex + 1}`}
             className="w-full h-full object-contain"
           />
-          <button
-            onClick={prevImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/75 rounded-full transition-colors"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/75 rounded-full transition-colors"
-          >
-            <ChevronRight size={24} />
-          </button>
+            {project.gallery.length > 1 && (
+            <>
+              <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/75 rounded-full transition-colors"
+              >
+              <ChevronLeft size={24} />
+              </button>
+              <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/75 rounded-full transition-colors"
+              >
+              <ChevronRight size={24} />
+              </button>
+            </>
+            )}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/75 rounded-full transition-colors"
