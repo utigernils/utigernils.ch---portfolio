@@ -92,7 +92,7 @@ const Intelipro = () => {
               onClick={e => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold">AI Assistant</h2>
+                <h2 className="text-2xl font-bold">Ask AI about my Projects</h2>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-neutral-800 rounded-full transition-colors"
@@ -115,7 +115,7 @@ const Intelipro = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="swiss-card border-t border-white/10"
                     >
-                      <h3 className="text-lg font-bold mb-2">Recommended Project</h3>
+                      <h3 className="text-lg font-bold mb-2">Detected Project:</h3>
                       <button
                         onClick={handleProjectClick}
                         className="w-full group bg-white/5 p-4 hover:bg-white/10 transition-colors flex items-center justify-between"
@@ -132,7 +132,7 @@ const Intelipro = () => {
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Ask about your project..."
+                    placeholder="Ask about my projects..."
                     className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-none focus:outline-none focus:border-white/30"
                   />
                   <button
