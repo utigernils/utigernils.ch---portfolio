@@ -11,6 +11,7 @@ const Intelipro = () => {
   const [isThinking, setIsThinking] = useState(false);
   const [displayedResponse, setDisplayedResponse] = useState('');
   const [showRecommendation, setShowRecommendation] = useState(false);
+  const [detectedProject, setDetectedProject] = useState('');
 
   useEffect(() => {
     if (response && displayedResponse.length < response.length) {
@@ -33,11 +34,25 @@ const Intelipro = () => {
     setShowRecommendation(false);
     
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await fetch('https://ai.utigernils.ch/intelipro/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: message }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setResponse(data.answer);
+        setDetectedProject(data.projectTitle);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setResponse('An error occurred while processing your request.');
+      });
     
     setIsThinking(false);
-    const newResponse = "I analyzed your project and here's what I found: This appears to be a well-structured React application using modern practices. The code organization is clean, and you're effectively using components. You might be interested in Project One, which demonstrates similar architectural patterns and optimization techniques.";
-    setResponse(newResponse);
+
     setDisplayedResponse('');
     setMessage('');
   };
@@ -120,7 +135,7 @@ const Intelipro = () => {
                         onClick={handleProjectClick}
                         className="w-full group bg-white/5 p-4 hover:bg-white/10 transition-colors flex items-center justify-between"
                       >
-                        <span>View Project One</span>
+                        <span>{detectedProject}</span>
                         <ArrowRight className="transform group-hover:translate-x-1 transition-transform" size={20} />
                       </button>
                     </motion.div>
