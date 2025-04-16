@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import SiteTitle from "../components/SiteTitle";
+import Intelipro from "../components/Intelipro";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -149,6 +150,7 @@ const Projects = () => {
           </div>
         </div>
       </SiteTitle>
+      <Intelipro />
     </div>
   );
 };
